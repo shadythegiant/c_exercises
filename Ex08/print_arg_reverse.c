@@ -1,4 +1,6 @@
 #include <unistd.h>
+#include <stdio.h>
+
 
 void ft_putchar(char c) {
     write(1,&c, 1); 
@@ -9,7 +11,10 @@ int main(int argc, char *argv[]) {
     int outer; 
     int inner; 
 
-    outer = argc - 1; 
+
+    
+
+    outer = argc - 1; //3
 
     while(outer > 0 ) { 
 

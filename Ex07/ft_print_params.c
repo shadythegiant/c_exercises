@@ -13,9 +13,9 @@ int main(int argc, char *argv[]) {
     i = 1; 
 
 
-    while(argv[i] ) { 
+    while(argv[i] != NULL) { 
        j = 0; 
-       while (argv[i][j]) { 
+       while (argv[i][j] != '\0') { 
         ft_putchar(argv[i][j]);
         j++; 
        }
@@ -23,6 +23,5 @@ int main(int argc, char *argv[]) {
        i++; 
     }
 
-    
 
 }
