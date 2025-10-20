@@ -3,8 +3,8 @@
 
 
 size_t ft_strlen(char const *s) {
-    size_t len; 
-    while(*s)
+    size_t len = 0; 
+    while(*s++)
         len++; 
     return (len);     
 }
@@ -14,8 +14,11 @@ size_t ft_strlcpy(char *dest, char const *src, size_t size) {
     if(!src) {
         return 0; 
     }
+    if(size == 0) {
+        return ft_strlen(src);
+    } 
    if(size > 0) {
-       while(i < size - 1 && *src) {
+       while(i < size - 1 && src[i]) {
            dest[i] = src[i]; 
            i++; 
        }
@@ -59,7 +62,7 @@ size_t ft_free(char **strings, size_t position, size_t len) {
 }  
 size_t ft_fillarr(char ** strings, char const *s, char delimeter ) {
     size_t len; 
-    size_t position; 
+    size_t position = 0; 
     while(*s) {
         len = 0;
         while(*s == delimeter && *s)
@@ -75,7 +78,6 @@ size_t ft_fillarr(char ** strings, char const *s, char delimeter ) {
         ft_strlcpy(strings[position], s- len, len + 1); 
         position++; 
     } 
-    
     return 0; 
 } 
 
@@ -107,8 +109,12 @@ int main() {
    char *s = "hello-world-are-there";
    char c = '-'; 
    char **strings = split(s, c); 
-   char space = ' '; 
-   printf("%d", ft_wordcount(s, space )); 
+   
+   for (size_t i = 0; strings[i]; i++) {
+    printf("Token %zu: %s\n", i, strings[i]);
+}
+
+   
 
     return 0;
 }
